@@ -1,0 +1,23 @@
+{
+  "name": "DWEC - E03-CapacidadesNavegador",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "runArgs": ["--security-opt", "label=disable"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "vitest.explorer",
+        "usernamehw.errorlens",
+        "bierner.markdown-mermaid"
+      ]
+    }
+  },
+  "forwardPorts": [3003],
+  "portsAttributes": {
+    "3003": { "label": "Página", "onAutoForward": "openBrowser" }
+  },
+  "postCreateCommand": "node --version && npm --version && echo '✅ Contenedor listo'",
+  "postAttachCommand": "npx --yes serve@14.2.6 --no-clipboard --listen 3003 .",
+  "remoteUser": "node"
+}

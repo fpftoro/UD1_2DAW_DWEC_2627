@@ -1,0 +1,18 @@
+{
+  "name": "DWEC - E02-BucleEventos",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "runArgs": ["--security-opt", "label=disable"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "vitest.explorer",
+        "usernamehw.errorlens",
+        "bierner.markdown-mermaid"
+      ]
+    }
+  },
+  "postCreateCommand": "node --version && npm --version && echo '✅ Contenedor listo'",
+  "remoteUser": "node"
+}

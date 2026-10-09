@@ -1,0 +1,28 @@
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 36rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  line-height: 1.5;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
+
+button {
+  grid-column: 2;
+  justify-self: start;
+  padding: 0.4rem 1rem;
+}
+
+#resultado {
+  font-weight: bold;
+}
+
+#resultado.error {
+  color: #b3261e;
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Orden de ejecución de scripts</title>
+    <link rel="stylesheet" href="estilos.css" />
+
+    <!-- Única excepción a la regla de no usar scripts en línea:
+         el registro tiene que existir antes que cualquier otro script. -->
+    <script>
+      window.registro = [];
+      window.registrar = (nombre) => {
+        window.registro.push({
+          nombre,
+          existeTitulo: document.querySelector('h1') !== null,
+          instante: performance.now().toFixed(1),
+        });
+      };
+      document.addEventListener('DOMContentLoaded', () => window.registrar('🔔 DOMContentLoaded'));
+      window.addEventListener('load', () => {
+        window.registrar('🔔 load');
+        const lista = document.querySelector('#registro');
+        for (const { nombre, existeTitulo, instante } of window.registro) {
+          const li = document.createElement('li');
+          li.textContent = `${nombre} · ¿existe el título? ${existeTitulo ? 'sí' : 'no'} · ${instante} ms`;
+          lista.append(li);
+        }
+      });
+    </script>
+
+    <!-- TODO: aquí van los cinco scripts, en el orden del enunciado -->
+  </head>
+  <body>
+    <h1>Orden de ejecución de scripts</h1>
+    <p>Con la caché desactivada y la red limitada a «4G rápido», recarga varias veces y observa si cambia el orden.</p>
+    <ol id="registro"></ol>
+    <img src="img/grande.jpg" alt="Paisaje de montañas: imagen pesada para retrasar el evento load" width="600" />
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Calculadora de propinas</title>
+    <script>
+      function calcular() {
+        var importe = document.getElementById('importe').value;
+        var porcentaje = document.getElementById('porcentaje').value;
+        var propina = importe * porcentaje / 100;
+        document.getElementById('resultado').innerHTML =
+          'Propina: ' + propina.toFixed(2) + ' € - Total: ' + (importe * 1 + propina).toFixed(2) + ' €';
+      }
+    </script>
+  </head>
+  <body onload="document.getElementById('importe').focus()">
+    <h1 style="color: darkgreen; font-family: sans-serif">Calculadora de propinas</h1>
+    <input id="importe" type="number" placeholder="Importe" />
+    <select id="porcentaje">
+      <option value="5">5 %</option>
+      <option value="10" selected>10 %</option>
+      <option value="15">15 %</option>
+    </select>
+    <button onclick="calcular()">Calcular</button>
+    <p id="resultado" style="font-weight: bold"></p>
+  </body>
+</html>

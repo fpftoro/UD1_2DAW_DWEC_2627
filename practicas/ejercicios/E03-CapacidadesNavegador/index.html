@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>¿Qué sabe hacer mi navegador?</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <h1>¿Qué sabe hacer mi navegador?</h1>
+
+    <section>
+      <h2>Capacidades detectadas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Capacidad</th>
+            <th>Soporte</th>
+          </tr>
+        </thead>
+        <tbody id="capacidades"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Datos del entorno</h2>
+      <dl id="entorno"></dl>
+    </section>
+
+    <section>
+      <h2>El hilo principal</h2>
+      <p>Contador (cada 100 ms): <output id="contador">0</output></p>
+      <button id="bloquear" type="button">Bloquear 3 s</button>
+      <button id="esperar" type="button">Esperar 3 s sin bloquear</button>
+      <p id="mensaje" role="status"></p>
+
+      <h3>Usa la página mientras está bloqueada</h3>
+      <p>
+        <label for="prueba">Escribe aquí:</label>
+        <input id="prueba" type="text" autocomplete="off" />
+      </p>
+      <p>
+        <button id="clic" type="button">Haz clic aquí</button>
+        Clics: <output id="clics">0</output>
+      </p>
+    </section>
+
+    <noscript><p>Esta página necesita JavaScript para funcionar.</p></noscript>
+  </body>
+</html>

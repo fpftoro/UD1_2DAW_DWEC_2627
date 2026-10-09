@@ -1,0 +1,50 @@
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 48rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  line-height: 1.5;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 0.4rem 0.8rem;
+  text-align: left;
+}
+
+.si {
+  color: #1b7f3b;
+}
+
+.no {
+  color: #b3261e;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 0 0.5rem;
+}
+
+output {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+button {
+  margin-right: 0.5rem;
+  padding: 0.4rem 0.8rem;
+}
+
+input {
+  padding: 0.4rem;
+  font-size: 1rem;
+}

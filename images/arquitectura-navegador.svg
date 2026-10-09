@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-labelledby="t d">
+  <title id="t">Arquitectura multiproceso de un navegador moderno</title>
+  <desc id="d">El proceso del navegador coordina la interfaz, la red y el almacenamiento. Cada pestaña tiene su proceso de renderizado aislado en una sandbox, que contiene el motor de renderizado y el motor de JavaScript. Un proceso GPU dibuja en pantalla.</desc>
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555c7a"/>
+    </marker>
+  </defs>
+  <style>
+    .t  { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #1b1f3b; }
+    .tt { font-size: 18px; font-weight: 700; }
+    .ts { font-size: 14px; }
+    .tx { font-size: 12px; fill: #555c7a; }
+    .l  { stroke: #555c7a; stroke-width: 2; fill: none; }
+  </style>
+
+  <rect width="960" height="560" rx="16" fill="#ffffff"/>
+
+  <!-- Proceso del navegador -->
+  <rect x="30" y="24" width="900" height="130" rx="12" fill="#e8e6f7" stroke="#6b5fb5" stroke-width="2"/>
+  <text x="50" y="52" class="t tt">Proceso del navegador (browser process)</text>
+  <text x="50" y="72" class="t tx">Coordina todo. Tiene privilegios para acceder al sistema operativo.</text>
+  <g>
+    <rect x="50" y="88" width="190" height="48" rx="8" fill="#ffffff" stroke="#6b5fb5"/>
+    <text x="145" y="110" text-anchor="middle" class="t ts">Interfaz (UI)</text>
+    <text x="145" y="126" text-anchor="middle" class="t tx">barra, pestañas, botones</text>
+    <rect x="260" y="88" width="190" height="48" rx="8" fill="#ffffff" stroke="#6b5fb5"/>
+    <text x="355" y="110" text-anchor="middle" class="t ts">Red</text>
+    <text x="355" y="126" text-anchor="middle" class="t tx">HTTP, DNS, caché, cookies</text>
+    <rect x="470" y="88" width="190" height="48" rx="8" fill="#ffffff" stroke="#6b5fb5"/>
+    <text x="565" y="110" text-anchor="middle" class="t ts">Almacenamiento</text>
+    <text x="565" y="126" text-anchor="middle" class="t tx">disco, perfiles, historial</text>
+    <rect x="680" y="88" width="230" height="48" rx="8" fill="#ffffff" stroke="#6b5fb5"/>
+    <text x="795" y="110" text-anchor="middle" class="t ts">Extensiones y plugins</text>
+    <text x="795" y="126" text-anchor="middle" class="t tx">en sus propios procesos</text>
+  </g>
+
+  <!-- Procesos de renderizado (sandbox) -->
+  <g>
+    <rect x="30" y="200" width="430" height="300" rx="12" fill="#fff8d6" stroke="#c9a400" stroke-width="2" stroke-dasharray="8 5"/>
+    <text x="50" y="228" class="t tt">Proceso de renderizado · pestaña 1</text>
+    <text x="50" y="248" class="t tx">🔒 Sandbox: sin acceso directo a disco, red ni otras pestañas</text>
+
+    <rect x="50" y="266" width="390" height="100" rx="10" fill="#ffffff" stroke="#c9a400"/>
+    <text x="70" y="292" class="t ts" font-weight="700">Motor de renderizado</text>
+    <text x="70" y="310" class="t tx">Blink (Chrome, Edge) · Gecko (Firefox) · WebKit (Safari)</text>
+    <text x="70" y="334" class="t ts">HTML → DOM · CSS → CSSOM</text>
+    <text x="70" y="354" class="t ts">layout → paint</text>
+
+    <rect x="50" y="380" width="390" height="100" rx="10" fill="#ffffff" stroke="#c9a400"/>
+    <text x="70" y="406" class="t ts" font-weight="700">Motor de JavaScript</text>
+    <text x="70" y="424" class="t tx">V8 (Chrome, Edge) · SpiderMonkey (Firefox) · JavaScriptCore (Safari)</text>
+    <text x="70" y="448" class="t ts">Intérprete + compilador JIT</text>
+    <text x="70" y="468" class="t ts">Un hilo principal + bucle de eventos</text>
+
+    <path d="M245 366 V380" class="l"/>
+    <text x="255" y="377" class="t tx">APIs del DOM</text>
+  </g>
+
+  <g>
+    <rect x="490" y="200" width="250" height="300" rx="12" fill="#fff8d6" stroke="#c9a400" stroke-width="2" stroke-dasharray="8 5"/>
+    <text x="510" y="228" class="t tt">Renderizado · pestaña 2</text>
+    <text x="510" y="248" class="t tx">🔒 Sandbox</text>
+    <rect x="510" y="266" width="210" height="100" rx="10" fill="#ffffff" stroke="#c9a400"/>
+    <text x="615" y="322" text-anchor="middle" class="t ts">Motor de renderizado</text>
+    <rect x="510" y="380" width="210" height="100" rx="10" fill="#ffffff" stroke="#c9a400"/>
+    <text x="615" y="436" text-anchor="middle" class="t ts">Motor de JavaScript</text>
+  </g>
+
+  <!-- GPU -->
+  <rect x="770" y="200" width="160" height="300" rx="12" fill="#dff3ff" stroke="#1e88c7" stroke-width="2"/>
+  <text x="850" y="232" text-anchor="middle" class="t tt">Proceso GPU</text>
+  <text x="850" y="262" text-anchor="middle" class="t ts">Compone las capas</text>
+  <text x="850" y="282" text-anchor="middle" class="t ts">y dibuja los píxeles</text>
+  <text x="850" y="302" text-anchor="middle" class="t ts">en pantalla</text>
+  <text x="850" y="440" text-anchor="middle" font-size="46">🖥️</text>
+
+  <!-- Conexiones -->
+  <path d="M245 154 V198" class="l" marker-end="url(#f)" marker-start="url(#f)"/>
+  <path d="M615 154 V198" class="l" marker-end="url(#f)" marker-start="url(#f)"/>
+  <path d="M850 154 V198" class="l" marker-end="url(#f)" marker-start="url(#f)"/>
+  <text x="255" y="182" class="t tx">IPC (mensajes)</text>
+
+  <text x="30" y="538" class="t tx">Si una pestaña se cuelga o la ataca una web maliciosa, solo cae su proceso: el resto del navegador sigue funcionando.</text>
+</svg>

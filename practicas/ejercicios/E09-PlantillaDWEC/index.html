@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plantilla DWEC</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Plantilla DWEC</h1>
+      <p id="entorno"></p>
+
+      <form id="calculadora">
+        <label for="precio">Precio (€)</label>
+        <input id="precio" name="precio" type="number" min="0" step="0.01" required />
+
+        <label for="iva">IVA</label>
+        <select id="iva" name="iva">
+          <option value="0.21" selected>21 %</option>
+          <option value="0.1">10 %</option>
+          <option value="0.04">4 %</option>
+        </select>
+
+        <label for="descuento">Descuento (%)</label>
+        <input id="descuento" name="descuento" type="number" min="0" max="100" value="0" />
+
+        <button type="submit">Calcular</button>
+      </form>
+
+      <p id="resultado" role="status"></p>
+    </main>
+    <noscript><p>Esta aplicación necesita JavaScript.</p></noscript>
+  </body>
+</html>
